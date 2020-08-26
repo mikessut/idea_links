@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="save" method="post">
+    <table>
+    <tr>
+        <td>Parents:</td>
+        <td><input name="parents" value="{{idea.parents}}"></td>
+    </tr>
+    <tr>
+        <td>Short txt:</td>
+        <td><input name="short_txt" value="{{idea.short_txt}}"></td>
+    </tr>
+    <tr>
+        <td>Long txt:</td>
+        <td><textarea name="long_txt" rows="20" cols="50">{{idea.long_txt}}</textarea></td>
+    </tr>
+    <tr>
+        <td>Childs:</td>
+        <td><input name="childs" value="{{idea.childs}}"></td>
+    </tr>
+    <tr>
+        <td>Related:</td>
+        <td><input name="related" value="{{idea.related}}"></td>
+    </tr>
+    </table>
+    <button type="submit">Save</button>
+    <input name="doc_id" type="hidden" value="{{idea.doc_id}}">
+</form>
+
+</body>
+</html>

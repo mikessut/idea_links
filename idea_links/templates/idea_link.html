@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Idea Links</title>
+<style>
+.search {
+    position: absolute;
+    top: 0px;
+}
+.top {
+    position: absolute;
+    top: 50px;
+}
+.main {
+    position: absolute;
+//    left: 30px;
+    top: 100px;
+}
+.main_left {
+    width: 500px;
+    float: left;
+}
+.related {
+    width: 150px;
+    float: left;
+}
+.right {
+width: 150px;
+float: left;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 30%;
+}
+</style>
+</head>
+<body>
+    <div class="search">
+        <form action="search"><input name="search_txt"><button type="submit">Search</button></form>
+    </div>
+    <div class="top">
+        {% for p in idea.get_parents() %}
+        <a href="?doc_id={{p.doc_id}}">{{ p }}</a><br>
+        {% endfor %}
+    </div>
+    <div class="main">
+        <div class="main_left">
+            doc_id: {{idea.doc_id}}<br>
+            {{ idea.visited }}<br>
+            {{ idea.short_txt }}<br>
+            <p>{{idea.long_txt_html()|safe}}</p>
+        </div>
+        <div class="related">
+            related<br>
+            {% for p in idea.get_relateds() %}
+            <a href="?doc_id={{p.doc_id}}">{{ p }}</a><br>
+            {% endfor %}
+        </div>
+        <div class="right">
+            <a href="edit?parents=[{{idea.doc_id}}]">New Child Idea</a><br>
+            <a href="edit?doc_id={{idea.doc_id}}">Edit Idea</a><br>
+            <a href="edit">New Idea</a><br>
+        </div>
+    </div>
+    <div class="bottom">
+        {% for p in idea.get_childs() %}
+        <a href="?doc_id={{p.doc_id}}">{{ p }}</a><br>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
